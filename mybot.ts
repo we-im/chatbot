@@ -70,9 +70,9 @@ bot
     if (/你已添加了/.test(content)) {
       return contact.say('好开心你来找我啦，回复“进群”让我把你拉进邻居儿的小屋吧!')
     } else if(!/&lt;/.test(content)){
-      tuling.ask(m.content(), { userid: m.from() })
+      tuling.ask(m.content(), { userid: m.from().id })
         .then(({ text }) => {
-          console.info('Tuling123', `Talker reply:"${text}" for "${m.content()}" `)
+          console.info('Tuling123', `Talker reply:"${text}" for "${m.from().name()}: ${m.content()}" `)
           m.say(text)
         })
         .catch(err => {
