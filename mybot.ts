@@ -36,7 +36,6 @@ bot
   .on('friend', async function (contact, request) {
     if (request) {
       await request.accept()
-      console.log('contact: ', contact)
       console.log(`Contact: ${contact.name()} send request ${request.hello}`)
     }
   })
