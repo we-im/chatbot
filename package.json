@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.1",
+    "qs": "^6.4.0",
     "tuling123-client": "0.0.1"
   }
 }

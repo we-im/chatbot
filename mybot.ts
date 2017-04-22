@@ -1,6 +1,7 @@
 import { Wechaty, Room } from 'wechaty'
 import axios from 'axios'
 
+const qs = require('qs');
 const Robot = require('tuling123-client')
 const { TULING123_API_KEY, SCKEY } = require('./config')
 const tuling = new Robot(TULING123_API_KEY)
@@ -8,8 +9,8 @@ const bot = Wechaty.instance({ profile: 'local' })
 
 let pushMessage = ({ text, desp }) => {
   console.log('pushMessage:', text, ':', desp)
-  axios.post(`http://sc.ftqq.com/${SCKEY}.send`, { text, desp }).then(data => {
-    console.log(data)
+  axios.post(`http://sc.ftqq.com/${SCKEY}.send`, qs.stringify({ text, desp })).then(result => {
+    console.log('axios: ', result.data)
   }).catch(err => console.error)
 }
 
@@ -26,7 +27,7 @@ bot
       require('qrcode-terminal').generate(loginUrl)
       pushMessage({
         text: '扫码请求',
-        desp: '要重新扫码~'
+        desp: loginUrl
       })
       console.log(url)
     }
