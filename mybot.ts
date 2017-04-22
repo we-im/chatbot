@@ -38,7 +38,6 @@ bot
       await request.accept()
       console.log('contact: ', contact)
       console.log(`Contact: ${contact.name()} send request ${request.hello}`)
-      contact.say('好开心你来找我啦，回复“进群”让我把你拉进邻居儿的小屋吧!')
     }
   })
 
@@ -69,14 +68,18 @@ bot
       m.say("hello how are you")
       return
     }
-    /你已添加了/.test(content) || tuling.ask(m.content(), { userid: m.from() })
-      .then(({ text }) => {
-        console.info('Tuling123', `Talker reply:"${text}" for "${m.content()}" `)
-        m.say(text)
-      })
-      .catch(err => {
-        console.error('Bot', 'on message rejected: %s', err)
-      })
+    if (/你已添加了/.test(content)) {
+      return contact.say('好开心你来找我啦，回复“进群”让我把你拉进邻居儿的小屋吧!')
+    } else {
+      tuling.ask(m.content(), { userid: m.from() })
+        .then(({ text }) => {
+          console.info('Tuling123', `Talker reply:"${text}" for "${m.content()}" `)
+          m.say(text)
+        })
+        .catch(err => {
+          console.error('Bot', 'on message rejected: %s', err)
+        })
+    }
   })
 
   .init()
