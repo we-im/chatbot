@@ -1,0 +1,4 @@
+export default {
+  TULING123_API_KEY: 'YOUR_KEY',
+  SCKEY: 'YOUR_KEY'
+}

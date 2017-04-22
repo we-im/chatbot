@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.16.1"
+    "axios": "^0.16.1",
+    "tuling123-client": "0.0.1"
   }
 }
