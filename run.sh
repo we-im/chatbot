@@ -1,0 +1,1 @@
+docker run -ti --volume="$(pwd)":/bot --rm zixia/wechaty mybot.ts
